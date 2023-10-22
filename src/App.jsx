@@ -19,13 +19,19 @@ function App () {
 
   // null es que no hay ganador, false es que hay un empate
   const [winner, setWinner] = useState(null)
+  const[contador, setContador]=useState(() =>{
+    const contadorFromStorage = window.localStorage.getItem('contador')
+    if (contadorFromStorage) return JSON.parse(contadorFromStorage)
+    return [0,0]
+  })
 
-  const resetGame = () => {
+  const resetGame = (clearContador = false) => {
     setBoard(Array(9).fill(null))
     setTurn(TURNS.X)
     setWinner(null)
-
-    resetGameStorage()
+    resetGameStorage(clearContador)
+    if(clearContador=== true)
+      setContador([0,0])
   }
 
   const updateBoard = (index) => {
@@ -39,24 +45,36 @@ function App () {
     // cambiar el turno
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
-    // guardar aqui partida
-    saveGameToStorage({
-      board: newBoard,
-      turn: newTurn
-    })
     // revisar si hay ganador
+    const newContador = [...contador]
     const newWinner = checkWinnerFrom(newBoard)
     if (newWinner) {
       setWinner(newWinner)
+      if(newWinner===TURNS.X){
+        newContador[0]++
+      }else{
+        newContador[1]++
+      }
+      setContador(newContador)
     } else if (checkEndGame(newBoard)) {
       setWinner(false) // empate
     }
+    // guardar aqui partida
+    saveGameToStorage({
+      board: newBoard,
+      turn: newTurn,
+      contador: newContador
+    })
+  }
+
+  const handleClick = ()=>{
+    resetGame(true)
   }
 
   return (
     <main className='board'>
-      <h1>Tres en ralla</h1>
-      <button onClick={resetGame}>Reset del juego</button>
+      <h1 className='text'>Tres en ralla</h1>
+      <button onClick={handleClick}>Empezamos de nuevo</button>
       <section className='game'>
         {
           board.map((square, index) => {
@@ -77,6 +95,7 @@ function App () {
         <Square isSelected={turn === TURNS.X}>
           {TURNS.X}
         </Square>
+        <p className='text'>{contador[0]}-{contador[1]}</p>
         <Square isSelected={turn === TURNS.O}>
           {TURNS.O}
         </Square>

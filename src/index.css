@@ -34,19 +34,24 @@ body {
   margin: 40px auto;
   text-align: center;
 }
-
-.board h1 {
+.board h2{
   color: #eee;
-  margin-bottom: 16px;
+  font-size: 40px;
+}
+
+.text{
+  color: #eee;
+  margin-bottom: 50px;
+  font-size: 50px;
 }
 
 .board button {
   padding: 8px 12px;
-  margin: 25px;
+  margin-bottom: 20px;
   background: transparent;
   border: 2px solid #eee;
   color: #eee;
-  width: 100px;
+  width: 150px;
   border-radius: 5px;
   transition: 0.2s;
   font-weight: bold;
@@ -57,7 +62,6 @@ body {
   background: #eee;
   color: #222;
 }
-
 .board .game {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -67,6 +71,7 @@ body {
 .turn {
   display: flex;
   justify-content: center;
+  align-items: baseline;
   margin: 15px auto;
   width: fit-content;
   position: relative;
@@ -111,7 +116,7 @@ body {
 }
 
 .winner .win {
-  margin: 0 auto;
+  margin: 0 0;
   width: fit-content;
   border: 2px solid #eee;
   border-radius: 10px;
