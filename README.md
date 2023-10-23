@@ -58,6 +58,6 @@ Este proyecto es una implementación simple del juego "Tres en Raya" (Tic-Tac-To
 
 ¡Diviértete jugando al Tres en Raya en React! Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con el equipo de desarrollo.
 
-[Demo en vivo](https://tu-demo-en-vivo.com)
+[Demo en vivo](http://www.xavieb.com/TresEnRallaReact/)
 
 ¡Gracias por tu interés en nuestro proyecto!
