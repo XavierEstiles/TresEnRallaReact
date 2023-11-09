@@ -21,7 +21,7 @@ Este proyecto es una implementación simple del juego "Tres en Raya" (Tic-Tac-To
 1. Clona este repositorio en tu máquina local:
 
    ```bash
-   git clone https://github.com/XavierEstiles/tres-en-raya-react.git
+   git clone https://github.com/XavierEstiles/TresEnRallaReact.git
    ```
 
 2. Navega al directorio del proyecto:
